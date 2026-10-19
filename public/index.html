@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Connectly</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Log in / sign up -->
+  <main id="auth-view" class="auth" hidden>
+    <div class="auth-card">
+      <h1>Connectly</h1>
+      <p class="muted">Find people. Chat. Call.</p>
+      <div class="tabs" id="auth-tabs">
+        <button type="button" data-auth-tab="login" class="active">Log in</button>
+        <button type="button" data-auth-tab="register">Sign up</button>
+      </div>
+
+      <div id="login-box"></div>
+      <div id="signup-box" hidden></div>
+
+      <div id="forgot-box" hidden></div>
+
+      <div id="google-box" hidden>
+        <div class="or"><span>or</span></div>
+        <div id="google-btn" class="google-btn"></div>
+        <p class="error" id="google-error"></p>
+      </div>
+    </div>
+  </main>
+
+  <!-- First-time setup (about you, who you want to meet) -->
+  <main id="onboarding-view" class="auth" hidden>
+    <div class="auth-card wide" id="ob-card"></div>
+  </main>
+
+  <!-- Confirm email (code), shown until the address is verified -->
+  <main id="verify-view" class="auth" hidden>
+    <div class="auth-card wide" id="verify-card"></div>
+  </main>
+
+  <!-- Main app -->
+  <div id="app-view" class="app" hidden>
+    <aside class="sidebar">
+      <header class="me-bar">
+        <div id="me-avatar"></div>
+        <div class="me-info"><strong id="me-name"></strong><span id="me-username" class="muted"></span></div>
+        <button class="btn small" id="btn-home" type="button">Home</button>
+        <button class="btn small" id="btn-edit-profile" type="button">Settings</button>
+        <button class="btn small" id="btn-logout" type="button">Log out</button>
+      </header>
+      <div class="search">
+        <input id="search" type="search" placeholder="Search people by name or username" autocomplete="off">
+      </div>
+      <div class="tabs">
+        <button type="button" data-tab="chats" class="active">Chats <span id="unread-badge" class="badge" hidden></span></button>
+        <button type="button" data-tab="discover">Discover</button>
+      </div>
+      <div id="filter" class="filter" hidden></div>
+      <ul id="list" class="list"></ul>
+    </aside>
+    <section id="main" class="main"></section>
+  </div>
+
+  <!-- Call screen -->
+  <div id="call" class="call" hidden>
+    <video id="remote-video" autoplay playsinline></video>
+    <div id="call-audio-ui" class="call-audio"><div id="call-avatar"></div></div>
+    <div class="call-info"><strong id="call-name"></strong><span id="call-status"></span></div>
+    <video id="local-video" autoplay playsinline muted></video>
+    <div class="call-controls">
+      <button class="btn round" id="btn-mute" type="button">Mute</button>
+      <button class="btn round" id="btn-cam" type="button">Camera off</button>
+      <button class="btn round danger" id="btn-hangup" type="button">End call</button>
+    </div>
+  </div>
+
+  <!-- Incoming call -->
+  <div id="incoming" class="incoming" hidden>
+    <div class="incoming-card">
+      <div id="incoming-avatar"></div>
+      <strong id="incoming-name"></strong>
+      <span id="incoming-type" class="muted"></span>
+      <div class="row">
+        <button class="btn ok" id="btn-accept" type="button">Accept</button>
+        <button class="btn danger" id="btn-decline" type="button">Decline</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
